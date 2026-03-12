@@ -1,0 +1,58 @@
+<div class="main-content" id="s2-main">
+    <div class="progress-area">
+        <span class="progress-label">Progress</span>
+        <div class="progress-bar"><div class="progress-fill" id="s2-progress" style="width:0%"></div></div>
+        <div class="score-badge">⭐ <span id="s2-score">0</span></div>
+    </div>
+
+    <p class="instruction" id="s2-instruction">Press the button to hear a word!</p>
+
+    <button class="big-btn btn-listen" id="s2-listen-btn" onclick="s2Listen()">
+        🔊 Listen to Word
+    </button>
+
+    <!-- user spelling input area -->
+    <div class="spelling-input-area">
+        <label class="spelling-label" for="s2-input">✏️ Type your spelling here:</label>
+        <input
+            type="text"
+            id="s2-input"
+            class="spelling-input"
+            placeholder="Type the word..."
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+        />
+    </div>
+
+    <div class="word-reveal" id="s2-reveal">
+        <span class="word-hint">Tap "Reveal" after you spell it!</span>
+        <div class="word-text" id="s2-word-text"></div>
+        <div class="letter-tiles" id="s2-tiles"></div>
+    </div>
+
+    <div class="btn-row">
+        <button class="big-btn btn-reveal" id="s2-reveal-btn" onclick="s2Reveal()" disabled style="opacity:0.4">
+            👀 Reveal Answer
+        </button>
+        <button class="big-btn btn-next" id="s2-next-btn" onclick="s2Next()" disabled style="opacity:0.4">
+            Next ➡️
+        </button>
+    </div>
+
+    <div class="feedback" id="s2-feedback"></div>
+
+    <div class="word-dots" id="s2-dots"></div>
+</div>
+
+<div class="completion" id="s2-complete">
+    <div class="completion-emoji">🎉</div>
+    <h2>Amazing job!</h2>
+    <p>You finished all the spelling words!</p>
+    <div class="stars" id="s2-stars"></div>
+    <br><br>
+    <button class="big-btn btn-listen" onclick="restartStage(1)" style="margin-bottom:0">
+        🔄 Play Again!
+    </button>
+</div>

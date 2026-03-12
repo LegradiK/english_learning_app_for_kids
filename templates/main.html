@@ -2,8 +2,10 @@
 
 {% block content %}
     <div class="stage-tabs">
-        <button class="tab-btn active" onclick="switchStage(1)">⭐ Stage 1 – Spelling</button>
-        <button class="tab-btn" onclick="switchStage(2)">🌟 Stage 2 – Sentences</button>
+        <button class="tab-btn active" onclick="switchStage(1)">⭐ Stage 1 – Tricky Words</button>
+        <button class="tab-btn" onclick="switchStage(2)">✨ Stage 2 – Vocabulary</button>
+        <button class="tab-btn" onclick="switchStage(3)">🌟 Stage 3 – Top Frequent Words</button>
+        <button class="tab-btn" onclick="switchStage(4)">🌠 Stage 4 – Fill the Sentence </button>
     </div>
 
     <div class="card">
@@ -11,99 +13,13 @@
         <!-- ===== STAGE 1 ===== -->
         <div class="stage-panel active" id="stage1">
 
-        <div class="main-content" id="s1-main">
-            <div class="progress-area">
-            <span class="progress-label">Progress</span>
-            <div class="progress-bar"><div class="progress-fill" id="s1-progress" style="width:0%"></div></div>
-            <div class="score-badge">⭐ <span id="s1-score">0</span></div>
-            </div>
-
-            <p class="instruction" id="s1-instruction">Press the button to hear a word!</p>
-
-            <button class="big-btn btn-listen" id="s1-listen-btn" onclick="s1Listen()">
-            🔊 Listen to Word
-            </button>
-
-            <div class="word-reveal" id="s1-reveal">
-            <span class="word-hint">Tap "Reveal" after you spell it!</span>
-            <div class="word-text" id="s1-word-text"></div>
-            <div class="letter-tiles" id="s1-tiles"></div>
-            </div>
-
-            <div class="btn-row">
-            <button class="big-btn btn-reveal" id="s1-reveal-btn" onclick="s1Reveal()" disabled style="opacity:0.4">
-                👀 Reveal Word
-            </button>
-            <button class="big-btn btn-next" id="s1-next-btn" onclick="s1Next()" disabled style="opacity:0.4">
-                Next ➡️
-            </button>
-            </div>
-
-            <div class="feedback" id="s1-feedback"></div>
-
-            <div class="word-dots" id="s1-dots"></div>
-        </div>
-
-        <div class="completion" id="s1-complete">
-            <div class="completion-emoji">🎉</div>
-            <h2>Amazing job!</h2>
-            <p>You finished all the spelling words!</p>
-            <div class="stars" id="s1-stars"></div>
-            <br><br>
-            <button class="big-btn btn-listen" onclick="restartStage(1)" style="margin-bottom:0">
-            🔄 Play Again!
-            </button>
-        </div>
-
-        </div>
+        {% include 'stage_1.html' %}
 
         <!-- ===== STAGE 2 ===== -->
         <div class="stage-panel" id="stage2">
 
-        <div class="main-content" id="s2-main">
-            <div class="progress-area">
-            <span class="progress-label">Progress</span>
-            <div class="progress-bar"><div class="progress-fill" id="s2-progress" style="width:0%"></div></div>
-            <div class="score-badge">⭐ <span id="s2-score">0</span></div>
-            </div>
-
-            <p class="instruction" id="s2-instruction">Press the button to hear a sentence!</p>
-
-            <button class="big-btn btn-listen" id="s2-listen-btn" onclick="s2Listen()">
-            🔊 Listen to Sentence
-            </button>
-
-            <div class="sentence-display" id="s2-sentence">
-            <!-- sentence rendered here -->
-            <span style="color:#ccc; font-size:1rem; font-family:'Nunito'; font-weight:700;">Your sentence will appear here...</span>
-            </div>
-
-            <div class="btn-row">
-            <button class="big-btn btn-reveal" id="s2-reveal-btn" onclick="s2Reveal()" disabled style="opacity:0.4">
-                👀 Show Words
-            </button>
-            <button class="big-btn btn-next" id="s2-next-btn" onclick="s2Next()" disabled style="opacity:0.4">
-                Next ➡️
-            </button>
-            </div>
-
-            <div class="feedback" id="s2-feedback"></div>
-
-            <div class="word-dots" id="s2-dots"></div>
-        </div>
-
-        <div class="completion" id="s2-complete">
-            <div class="completion-emoji">🌈</div>
-            <h2>Superstar!</h2>
-            <p>You finished all the sentences!</p>
-            <div class="stars" id="s2-stars"></div>
-            <br><br>
-            <button class="big-btn btn-listen" onclick="restartStage(2)" style="margin-bottom:0">
-            🔄 Play Again!
-            </button>
-        </div>
-
-        </div>
+        {% include 'stage_2.html' %}
 
     </div>
+    
 {% endblock %}
