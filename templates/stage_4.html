@@ -7,9 +7,24 @@
 
             <p class="instruction" id="s4-instruction">Press the button to hear a sentence!</p>
 
-            <button class="big-btn btn-listen" id="s4-listen-btn" onclick="s4Listen()">
+            <button class="big-btn btn-listen" id="s4-listen-btn" onclick="sentenceListen(4)">
             🔊 Listen to Sentence
             </button>
+
+            <!-- user spelling input area -->
+            <div class="spelling-input-area">
+                <label class="spelling-label" for="s4-input">✏️ Type your answer here:</label>
+                <input
+                    type="text"
+                    id="s4-input"
+                    class="spelling-input"
+                    placeholder="Type Here"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                />
+            </div>
 
             <div class="sentence-display" id="s4-sentence">
             <!-- sentence rendered here -->
@@ -17,10 +32,10 @@
             </div>
 
             <div class="btn-row">
-            <button class="big-btn btn-reveal" id="s4-reveal-btn" onclick="s4Reveal()" disabled style="opacity:0.4">
-                👀 Show Words
+            <button class="big-btn btn-reveal" id="s4-reveal-btn" onclick="sentenceReveal(4)" disabled style="opacity:0.4">
+                👀 Reveal Answer
             </button>
-            <button class="big-btn btn-next" id="s4-next-btn" onclick="s4Next()" disabled style="opacity:0.4">
+            <button class="big-btn btn-next" id="s4-next-btn" onclick="sentenceNext(4)" disabled style="opacity:0.4">
                 Next ➡️
             </button>
             </div>
@@ -36,7 +51,7 @@
             <p>You finished all the sentences!</p>
             <div class="stars" id="s4-stars"></div>
             <br><br>
-            <button class="big-btn btn-listen" onclick="restartStage(2)" style="margin-bottom:0">
+            <button class="big-btn btn-listen" onclick="restartStage(4)" style="margin-bottom:0">
             🔄 Play Again!
             </button>
         </div>

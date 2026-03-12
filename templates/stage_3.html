@@ -7,18 +7,18 @@
 
     <p class="instruction" id="s3-instruction">Press the button to hear a word!</p>
 
-    <button class="big-btn btn-listen" id="s3-listen-btn" onclick="s3Listen()">
+    <button class="big-btn btn-listen" id="s3-listen-btn" onclick="spellingListen(3)">
         🔊 Listen to Word
     </button>
 
     <!-- user spelling input area -->
     <div class="spelling-input-area">
-        <label class="spelling-label" for="s3-input">✏️ Type your spelling here:</label>
+        <label class="spelling-label" for="s3-input">✏️ Type your answer here:</label>
         <input
             type="text"
             id="s3-input"
             class="spelling-input"
-            placeholder="Type the word..."
+            placeholder="Type Here"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
@@ -33,10 +33,10 @@
     </div>
 
     <div class="btn-row">
-        <button class="big-btn btn-reveal" id="s3-reveal-btn" onclick="s3Reveal()" disabled style="opacity:0.4">
+        <button class="big-btn btn-reveal" id="s3-reveal-btn" onclick="spellingReveal(3)" disabled style="opacity:0.4">
             👀 Reveal Answer
         </button>
-        <button class="big-btn btn-next" id="s3-next-btn" onclick="s3Next()" disabled style="opacity:0.4">
+        <button class="big-btn btn-next" id="s3-next-btn" onclick="spellingNext(3)" disabled style="opacity:0.4">
             Next ➡️
         </button>
     </div>
@@ -52,7 +52,7 @@
     <p>You finished all the spelling words!</p>
     <div class="stars" id="s3-stars"></div>
     <br><br>
-    <button class="big-btn btn-listen" onclick="restartStage(1)" style="margin-bottom:0">
+    <button class="big-btn btn-listen" onclick="restartStage(3)" style="margin-bottom:0">
         🔄 Play Again!
     </button>
 </div>

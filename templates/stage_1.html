@@ -7,18 +7,18 @@
 
     <p class="instruction" id="s1-instruction">Press the button to hear a word!</p>
 
-    <button class="big-btn btn-listen" id="s1-listen-btn" onclick="s1Listen()">
+    <button class="big-btn btn-listen" id="s1-listen-btn" onclick="spellingListen(1)">
         🔊 Listen to Word
     </button>
 
     <!-- user spelling input area -->
     <div class="spelling-input-area">
-        <label class="spelling-label" for="s1-input">✏️ Type your spelling here:</label>
+        <label class="spelling-label" for="s1-input">✏️ Type your answer here:</label>
         <input
             type="text"
             id="s1-input"
             class="spelling-input"
-            placeholder="Type the word..."
+            placeholder="Type Here"
             autocomplete="off"
             autocorrect="off"
             autocapitalize="off"
@@ -33,10 +33,10 @@
     </div>
 
     <div class="btn-row">
-        <button class="big-btn btn-reveal" id="s1-reveal-btn" onclick="s1Reveal()" disabled style="opacity:0.4">
+        <button class="big-btn btn-reveal" id="s1-reveal-btn" onclick="spellingReveal(1)" disabled style="opacity:0.4">
             👀 Reveal Answer
         </button>
-        <button class="big-btn btn-next" id="s1-next-btn" onclick="s1Next()" disabled style="opacity:0.4">
+        <button class="big-btn btn-next" id="s1-next-btn" onclick="spellingNext(1)" disabled style="opacity:0.4">
             Next ➡️
         </button>
     </div>
