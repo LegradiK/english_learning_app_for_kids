@@ -86,3 +86,10 @@ year2 = [
 ]
 
 all_sentences = reception + year1 + year2
+
+quiz = {
+    "reception": reception,
+    "year1": year1,
+    "year2": year2,
+    "all": all_sentences
+}

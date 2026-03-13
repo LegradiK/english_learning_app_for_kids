@@ -13,14 +13,14 @@
     </div>
 
     <div class="difficulty-tabs">
-        <button class="diff-btn {% if active_difficulty == 'reception' %}active{% endif %}"
-        onclick="switchDifficulty('reception')">🌱 Reception</button>
+        <button class="diff-btn active {% if active_difficulty == 'reception' %}active{% endif %}"
+        data-difficulty="reception" onclick="switchDifficulty(event, 'reception')">🌱 Reception</button>
         <button class="diff-btn {% if active_difficulty == 'year1' %}active{% endif %}"
-        onclick="switchDifficulty('year1')">📗 Year 1</button>
+        data-difficulty="year1" onclick="switchDifficulty(event, 'year1')">📗 Year 1</button>
         <button class="diff-btn {% if active_difficulty == 'year2' %}active{% endif %}"
-        onclick="switchDifficulty('year2')">📘 Year 2</button>
+        data-difficulty="year2" onclick="switchDifficulty(event, 'year2')">📘 Year 2</button>
         <button class="diff-btn {% if active_difficulty == 'all' %}active{% endif %}"
-        onclick="switchDifficulty('all')">
+        data-difficulty="all" onclick="switchDifficulty(event, 'all')">
         <img src="{{ url_for('static', filename='spellbook.png') }}" alt="icon" 
         style="width: 1em; height: 1em; vertical-align: middle;"> All</button>
     </div>

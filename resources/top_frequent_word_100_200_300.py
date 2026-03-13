@@ -50,4 +50,3 @@ quiz = {
 }
 quiz["top_200"] = quiz["top_100"] + quiz["top_101_200"]
 quiz["top_300"] = quiz["top_200"] + quiz["top_201_300"]
-quiz["all"] = quiz["top_100"] + quiz["top_200"] + quiz["top_300"]

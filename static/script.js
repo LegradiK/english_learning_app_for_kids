@@ -1,6 +1,22 @@
 // ==================== DATA (from Flask via Jinja2) ====================
 const usedWords = { stage1: {}, stage2: {}, stage3: {}, stage4: {} };
 
+const difficultyLabels = {
+    default: { reception: 'Reception', year1: 'Year 1', year2: 'Year 2' },
+    stage3:  { reception: 'Top 100',   year1: 'Top 200', year2: 'Top 300' }
+};
+
+// ==================== UTILS ====================
+function getActiveDifficulty(n) {
+    const btn = document.querySelector('.diff-btn.active');
+    const difficulty = btn ? btn.dataset.difficulty : 'reception';
+    if (n === 3) {
+        const map = { reception: 'top_100', year1: 'top_200', year2: 'top_300' };
+        return map[difficulty] || 'top_100';
+    }
+    return difficulty;
+}
+
 function getWords(stageId, difficulty) {
     return quizData[stageId][difficulty] || [];
 }
@@ -20,6 +36,67 @@ function pickWord(stageId, difficulty) {
     return chosen;
 }
 
+function setBtn(id, enabled) {
+    const btn = document.getElementById(id);
+    btn.disabled = !enabled;
+    btn.style.opacity = enabled ? '1' : '0.4';
+}
+
+function showFeedback(id, msg, type) {
+    const el = document.getElementById(id);
+    el.textContent = msg;
+    el.className = 'feedback show ' + type;
+}
+
+function updateProgress(n, index, total) {
+    document.getElementById(`s${n}-progress`).style.width = (index / total * 100) + '%';
+}
+
+function renderDots(id, total, current) {
+    const container = document.getElementById(id);
+    container.innerHTML = '';
+    for (let i = 0; i < total; i++) {
+        const d = document.createElement('div');
+        d.className = 'dot' + (i < current ? ' done' : i === current ? ' current' : '');
+        container.appendChild(d);
+    }
+}
+
+function markDot(id, index, total) {
+    renderDots(id, total, index);
+    const dots = document.querySelectorAll('#' + id + ' .dot');
+    if (dots[index]) {
+        dots[index].classList.remove('current');
+        dots[index].classList.add('done');
+    }
+}
+
+function launchEmojis(emojis) {
+    for (let i = 0; i < 6; i++) {
+        setTimeout(() => {
+            const el = document.createElement('div');
+            el.className = 'emoji-float';
+            el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            el.style.left = (20 + Math.random() * 60) + 'vw';
+            el.style.top = (30 + Math.random() * 40) + 'vh';
+            document.body.appendChild(el);
+            setTimeout(() => el.remove(), 1600);
+        }, i * 150);
+    }
+}
+
+function showCompletion(n) {
+    document.getElementById(`s${n}-main`).classList.add('hidden');
+    document.getElementById(`s${n}-complete`).classList.add('show');
+    launchEmojis(['🎉', '🌟', '🏆', '🎊', '💫']);
+    speak('Congratulations! You are a Word Wizard!');
+}
+
+function restartStage(n) {
+    usedWords[`stage${n}`] = {};
+    stageInit(n);
+}
+
 // ==================== STATE ====================
 const state = {};
 
@@ -37,7 +114,7 @@ function speak(text, onEnd) {
 
 // ==================== INIT ====================
 function stageInit(n) {
-    const difficulty = getActiveDifficulty();
+    const difficulty = getActiveDifficulty(n);
     const stageId = `stage${n}`;
     const word = pickWord(stageId, difficulty);
     const all = getWords(stageId, difficulty);
@@ -91,6 +168,63 @@ function spellingListen(n) {
     });
 }
 
+function renderInputComparison(n) {
+    const item = state[n].current;
+    const input = document.getElementById(`s${n}-input`).value.trim().toLowerCase();
+    const answer = item.word.toLowerCase();
+
+    const tilesDiv = document.getElementById(`s${n}-tiles`);
+    tilesDiv.innerHTML = '';
+
+    // render answer tiles with correct/incorrect highlighting
+    answer.split('').forEach((ch, i) => {
+        const tile = document.createElement('div');
+        tile.className = 'letter-tile';
+        tile.textContent = ch.toUpperCase();
+
+        if (input.length === 0) {
+            // no input — neutral
+            tile.style.borderColor = '#ddd';
+        } else if (input[i] === undefined) {
+            // answer longer than input — missing letters in red
+            tile.style.borderColor = '#FF6B6B';
+            tile.style.background = '#fff0f0';
+        } else if (input[i] === ch) {
+            // correct letter — green
+            tile.style.borderColor = '#6BCB77';
+            tile.style.background = '#f0fff4';
+        } else {
+            // wrong letter — red, show what they typed above
+            tile.style.borderColor = '#FF6B6B';
+            tile.style.background = '#fff0f0';
+
+            // show what user typed in small text above
+            const typed = document.createElement('div');
+            typed.style.cssText = 'font-size:0.65rem;color:#FF6B6B;font-weight:800;line-height:1;margin-bottom:2px;';
+            typed.textContent = input[i].toUpperCase();
+            tile.style.flexDirection = 'column';
+            tile.style.fontSize = '1.1rem';
+            tile.insertBefore(typed, tile.firstChild);
+        }
+
+        tile.style.animationDelay = (i * 0.08) + 's';
+        tilesDiv.appendChild(tile);
+    });
+
+    // if input is longer than answer — show extra letters in red
+    if (input.length > answer.length) {
+        input.slice(answer.length).split('').forEach(ch => {
+            const tile = document.createElement('div');
+            tile.className = 'letter-tile';
+            tile.textContent = ch.toUpperCase();
+            tile.style.borderColor = '#FF6B6B';
+            tile.style.background = '#fff0f0';
+            tile.style.opacity = '0.6';
+            tilesDiv.appendChild(tile);
+        });
+    }
+}
+
 function spellingReveal(n) {
     if (!state[n].listened) return;
     const item = state[n].current;
@@ -98,36 +232,34 @@ function spellingReveal(n) {
     reveal.classList.add('revealed');
     document.getElementById(`s${n}-word-text`).textContent = item.emoji;
 
-    const tilesDiv = document.getElementById(`s${n}-tiles`);
-    tilesDiv.innerHTML = '';
-    item.word.split('').forEach((ch, i) => {
-        const tile = document.createElement('div');
-        tile.className = 'letter-tile';
-        tile.textContent = ch.toUpperCase();
-        tile.style.animationDelay = (i * 0.08) + 's';
-        tilesDiv.appendChild(tile);
-    });
+    // replace old tile rendering with comparison
+    renderInputComparison(n);
 
     speak(item.word);
     state[n].revealed = true;
     state[n].score++;
     document.getElementById(`s${n}-score`).textContent = state[n].score;
 
-    const msgs = ['Great work!', 'Super!', 'You got it!', 'Brilliant!', 'Fantastic!'];
-    showFeedback(`s${n}-feedback`, msgs[Math.floor(Math.random() * msgs.length)], 'great');
-    launchEmojis(['⭐', '🎊', '✨', '💫']);
+    const input = document.getElementById(`s${n}-input`).value.trim().toLowerCase();
+    const correct = input === item.word.toLowerCase();
+
+    const msgs = correct
+        ? ['Perfect spelling!', 'Nailed it!', 'Spot on!', 'Brilliant!', 'You got it!']
+        : ['Good try!', 'Nearly there!', 'Keep practising!', 'Almost!'];
+    showFeedback(`s${n}-feedback`, msgs[Math.floor(Math.random() * msgs.length)], correct ? 'great' : 'keep-going');
+    launchEmojis(correct ? ['⭐', '🎊', '✨', '💫'] : ['💪', '📝', '🌟']);
 
     setBtn(`s${n}-reveal-btn`, false);
     setBtn(`s${n}-next-btn`, true);
 
-    const index = usedWords[`stage${n}`][getActiveDifficulty()].length;
+    const index = usedWords[`stage${n}`][getActiveDifficulty(n)].length;
     const total = state[n].current.total;
     markDot(`s${n}-dots`, index - 1, total);
     updateProgress(n, index, total);
 }
 
 function spellingNext(n) {
-    const difficulty = getActiveDifficulty();
+    const difficulty = getActiveDifficulty(n);
     const stageId = `stage${n}`;
     const index = usedWords[stageId][difficulty] ? usedWords[stageId][difficulty].length : 0;
     const total = getWords(stageId, difficulty).length;
@@ -203,14 +335,14 @@ function sentenceReveal(n) {
     setBtn(`s${n}-reveal-btn`, false);
     setBtn(`s${n}-next-btn`, true);
 
-    const index = usedWords[`stage${n}`][getActiveDifficulty()].length;
+    const index = usedWords[`stage${n}`][getActiveDifficulty(n)].length;
     const total = state[n].current.total;
     markDot(`s${n}-dots`, index - 1, total);
     updateProgress(n, index, total);
 }
 
 function sentenceNext(n) {
-    const difficulty = getActiveDifficulty();
+    const difficulty = getActiveDifficulty(n);
     const stageId = `stage${n}`;
     const index = usedWords[stageId][difficulty] ? usedWords[stageId][difficulty].length : 0;
     const total = getWords(stageId, difficulty).length;
@@ -222,4 +354,49 @@ function sentenceNext(n) {
 
     const word = pickWord(stageId, difficulty);
     state[n].current = { word: word, full: word, blanks: [], emoji: "", index, total };
-    sente
+    sentenceResetUI(n);
+    renderDots(`s${n}-dots`, total, index);
+}
+
+// ==================== STAGE TABS ====================
+function switchStage(n) {
+    document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === n - 1));
+    document.querySelectorAll('.stage-panel').forEach((p, i) => p.classList.toggle('active', i === n - 1));
+    window.speechSynthesis && window.speechSynthesis.cancel();
+
+    const labels = n === 3 ? difficultyLabels.stage3 : difficultyLabels.default;
+    document.querySelectorAll('.diff-btn').forEach(btn => {
+        const key = btn.dataset.difficulty;
+        if (labels[key]) btn.textContent = labels[key];
+    });
+
+    // hide 'all' button for stage 3
+    const allBtn = document.querySelector('.diff-btn[data-difficulty="all"]');
+    if (allBtn) allBtn.style.display = n === 3 ? 'none' : '';
+
+    // always reset to first visible difficulty button when switching stage
+    document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
+    const firstVisible = document.querySelector('.diff-btn:not([style*="display: none"])');
+    if (firstVisible) firstVisible.classList.add('active');
+
+    stageInit(n);
+}
+
+// ==================== DIFFICULTY TABS ====================
+function switchDifficulty(event, difficulty) {
+    console.log("clicked difficulty:", difficulty);
+    
+    document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
+    // use data-difficulty to find the right button instead of event.target
+    const clicked = document.querySelector(`.diff-btn[data-difficulty="${difficulty}"]`);
+    if (clicked) clicked.classList.add('active');
+
+    usedWords.stage1 = {};
+    usedWords.stage2 = {};
+    usedWords.stage3 = {};
+    usedWords.stage4 = {};
+    [1, 2, 3, 4].forEach(n => stageInit(n));
+}
+
+// ==================== INIT ====================
+[1, 2, 3, 4].forEach(n => stageInit(n));
