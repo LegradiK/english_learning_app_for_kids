@@ -320,6 +320,12 @@ function switchStage(n) {
   document.querySelectorAll('.stage-panel').forEach((p, i) => p.classList.toggle('active', i === n - 1));
   window.speechSynthesis && window.speechSynthesis.cancel();
 }
+// ==================== DIFFICULTY TABS ====================
+function switchDifficulty(difficulty) {
+    document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+    // your logic to filter words by difficulty
+}
 
 // ==================== INIT ====================
 spellingInit(1);

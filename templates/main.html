@@ -2,10 +2,23 @@
 
 {% block content %}
     <div class="stage-tabs">
-        <button class="tab-btn active" onclick="switchStage(1)">⭐ Stage 1 – Tricky Words</button>
-        <button class="tab-btn" onclick="switchStage(2)">✨ Stage 2 – Vocabulary</button>
-        <button class="tab-btn" onclick="switchStage(3)">🌟 Stage 3 – Top Frequent Words</button>
-        <button class="tab-btn" onclick="switchStage(4)">🌠 Stage 4 – Fill the Sentence </button>
+        <button class="tab-btn {% if active_stage == 'stage1' %}active{% endif %}" 
+        onclick="switchStage(1)">⭐ Stage 1 – Tricky Words</button>
+        <button class="tab-btn {% if active_stage == 'stage2' %}active{% endif %}" 
+        onclick="switchStage(2)">✨ Stage 2 – Vocabulary</button>
+        <button class="tab-btn {% if active_stage == 'stage3' %}active{% endif %}" 
+        onclick="switchStage(3)">🌟 Stage 3 – Top Frequent Words</button>
+        <button class="tab-btn {% if active_stage == 'stage3' %}active{% endif %}" 
+        onclick="switchStage(4)">🌠 Stage 4 – Fill the Sentence</button>
+    </div>
+
+    <div class="difficulty-tabs">
+        <button class="diff-btn {% if active_difficulty == 'reception' %}active{% endif %}"
+        onclick="switchDifficulty('reception')">🌱 Reception</button>
+        <button class="diff-btn {% if active_difficulty == 'year1' %}active{% endif %}"
+        onclick="switchDifficulty('year1')">📗 Year 1</button>
+        <button class="diff-btn {% if active_difficulty == 'year2' %}active{% endif %}"
+        onclick="switchDifficulty('year2')">📘 Year 2</button>
     </div>
 
     <div class="card">

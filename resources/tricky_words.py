@@ -1,26 +1,16 @@
-reception_phase2 = [
+reception = [
     "the", "a", "do", "to", "today", "of", "said", "says",
     "are", "were", "was", "is", "his", "has", "I", "you",
     "your", "they", "be", "he", "she", "we", "me", "no",
-    "go", "so"
-]
- 
-reception_phase3 = [
-    "we", "me", "be", "he", "she", "they", "all", "are",
+    "go", "so", "we", "me", "be", "he", "she", "they", "all", "are",
     "my", "her", "come", "some", "one", "once", "ask",
     "could", "would", "should", "our", "house", "mouse",
-    "water", "want"
-]
- 
-reception_phase4 = [
-    "said", "have", "like", "so", "do", "some", "come",
+    "water", "want", "said", "have", "like", "so", "do", "some", "come",
     "were", "there", "little", "one", "when", "what", "out",
     "oh", "their", "people", "Mr", "Mrs", "looked", "called",
     "asked", "could"
 ]
  
-reception_all_tricky_words = reception_phase2 + reception_phase3 + reception_phase4
-
 year1 = [
     "the", "a", "do", "to", "today", "of", "said", "says",
     "are", "were", "was", "is", "his", "has", "I", "you",
@@ -46,5 +36,5 @@ year2 = [
     "somebody", "nobody", "today", "together"
 ]
  
-all_tricky_words = reception_phase2 + reception_phase3 + reception_phase4 + year1 + year2
+all_tricky_words = reception + year1 + year2
  

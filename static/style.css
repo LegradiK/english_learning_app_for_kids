@@ -68,7 +68,7 @@
   .stage-tabs {
     display: flex;
     gap: 12px;
-    margin-bottom: 28px;
+    margin-bottom: 10px;
     background: rgba(255,255,255,0.5);
     padding: 8px;
     border-radius: 50px;
@@ -474,3 +474,46 @@
     flex-wrap: wrap;
     white-space: normal;
   }
+
+  /* difficulty buttons */
+  .difficulty-tabs {
+    display: flex;
+    gap: 10px;
+    margin: 0px 0 10px 0;
+    padding: 0 4px;
+}
+
+.diff-btn {
+    padding: 8px 22px;
+    border: 2px solid transparent;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #f0f0f0;
+    color: #555;
+}
+
+.diff-btn:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+/* Each difficulty gets its own colour */
+.diff-btn:nth-child(1) { border-color: #a8d5a2; }   /* Reception - green */
+.diff-btn:nth-child(2) { border-color: #80b6d1; }   /* Year 1 - blue */
+.diff-btn:nth-child(3) { border-color: #d5a2c4; }   /* Year 2 - purple */
+
+.diff-btn:nth-child(1).active {
+    background-color: #a8d5a2;
+    color: #fff;
+}
+.diff-btn:nth-child(2).active {
+    background-color: #80b6d1;
+    color: #fff;
+}
+.diff-btn:nth-child(3).active {
+    background-color: #d5a2c4;
+    color: #fff;
+}

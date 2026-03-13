@@ -7,7 +7,7 @@
 # ============================================================
 
 # ==================== RECEPTION ====================
-reception_sentences = [
+reception = [
     {"quiz_sentence": "The ___ sat on the mat.",         "answer_sentence": "The cat sat on the mat."},
     {"quiz_sentence": "A big red ___.",                   "answer_sentence": "A big red bus."},
     {"quiz_sentence": "The ___ ran fast.",                "answer_sentence": "The dog ran fast."},
@@ -31,7 +31,7 @@ reception_sentences = [
 ]
 
 # ==================== YEAR 1 ====================
-year1_sentences = [
+year1 = [
     {"quiz_sentence": "The frog ___ over the log.",       "answer_sentence": "The frog jumped over the log."},
     {"quiz_sentence": "The ___ is very loud.",            "answer_sentence": "The drum is very loud."},
     {"quiz_sentence": "The ___ is on the mast.",          "answer_sentence": "The flag is on the mast."},
@@ -56,7 +56,7 @@ year1_sentences = [
 ]
 
 # ==================== YEAR 2 ====================
-year2_sentences = [
+year2 = [
     {"quiz_sentence": "The dog is ___ over the fence.",   "answer_sentence": "The dog is jumping over the fence."},
     {"quiz_sentence": "She smiled and ___ her hands.",    "answer_sentence": "She smiled and clapped her hands."},
     {"quiz_sentence": "He ___ all the way home.",         "answer_sentence": "He hopped all the way home."},
@@ -85,4 +85,4 @@ year2_sentences = [
     {"quiz_sentence": "The ___ was dark and quiet.",      "answer_sentence": "The night was dark and quiet."},
 ]
 
-all_sentences = reception_sentences + year1_sentences + year2_sentences
+all_sentences = reception + year1 + year2

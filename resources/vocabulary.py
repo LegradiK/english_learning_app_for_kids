@@ -1,6 +1,6 @@
 # ==================== RECEPTION (EYFS) ====================
 # High frequency words children should read and spell by end of Reception
-reception_vocabulary = [
+reception = [
     # Common nouns
     "cat", "dog", "mum", "dad", "man", "sun", "day", "fish",
     "tree", "ball", "book", "bed", "bag", "hat", "cup", "bus",
@@ -18,7 +18,7 @@ reception_vocabulary = [
  
 # ==================== YEAR 1 ====================
 # Words children should read and spell by end of Year 1
-year1_vocabulary = [
+year1 = [
     # Common exception words (statutory)
     "the", "a", "do", "to", "today", "of", "said", "says",
     "are", "were", "was", "is", "his", "has", "I", "you",
@@ -45,7 +45,7 @@ year1_vocabulary = [
  
 # ==================== YEAR 2 ====================
 # Words children should read and spell by end of Year 2
-year2_vocabulary = [
+year2 = [
     # Common exception words (statutory)
     "door", "floor", "poor", "because", "find", "kind", "mind",
     "behind", "child", "children", "wild", "climb", "most", "only",
