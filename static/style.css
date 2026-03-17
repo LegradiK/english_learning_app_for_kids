@@ -475,15 +475,25 @@
     white-space: normal;
   }
 
-  /* difficulty buttons */
-  .difficulty-tabs {
+/* ── wrapper ── */
+.difficulty-and-voices {
     display: flex;
-    gap: 10px;
-    margin: 0px 0 10px 0;
+    flex-direction: row;
+    gap: 8px;
+    margin: 0 0 10px 0;
     padding: 0 4px;
 }
 
-.diff-btn {
+.diff-btns,
+.voice-btns {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ── shared button base ── */
+.diff-btn,
+.speech-voice-btn {
     padding: 8px 22px;
     border: 2px solid transparent;
     border-radius: 20px;
@@ -495,34 +505,33 @@
     color: #555;
 }
 
-.diff-btn:hover {
+.diff-btn:hover,
+.speech-voice-btn:hover {
     background-color: #e0e0e0;
     transform: translateY(-2px);
 }
 
-/* Each difficulty gets its own colour */
+/* ── difficulty colours ── */
 .diff-btn:nth-child(1) { border-color: #a8d5a2; }   /* Reception - green */
 .diff-btn:nth-child(2) { border-color: #80b6d1; }   /* Year 1 - blue */
 .diff-btn:nth-child(3) { border-color: #d396be; }   /* Year 2 - purple */
 .diff-btn:nth-child(4) { border-color: #f08181; }   /* All - red */
 
-.diff-btn:nth-child(1).active {
-    background-color: #a8d5a2;
-    color: #fff;
-}
-.diff-btn:nth-child(2).active {
-    background-color: #80b6d1;
-    color: #fff;
-}
-.diff-btn:nth-child(3).active {
-    background-color: #d396be;
-    color: #fff;
-}
-.diff-btn:nth-child(4).active {
-    background-color: #f08181;
-    color: #fff;
-}
-.diff-btn img {
+.diff-btn:nth-child(1).active { background-color: #a8d5a2; color: #fff; }
+.diff-btn:nth-child(2).active { background-color: #80b6d1; color: #fff; }
+.diff-btn:nth-child(3).active { background-color: #d396be; color: #fff; }
+.diff-btn:nth-child(4).active { background-color: #f08181; color: #fff; }
+
+/* ── voice colours ── */
+.speech-voice-btn:nth-child(1) { border-color: #f7b267; }   /* Woman - orange */
+.speech-voice-btn:nth-child(2) { border-color: #6bb5c9; }   /* Man - teal */
+
+.speech-voice-btn:nth-child(1).active { background-color: #f7b267; color: #fff; }
+.speech-voice-btn:nth-child(2).active { background-color: #6bb5c9; color: #fff; }
+
+/* ── images inside buttons ── */
+.diff-btn img,
+.speech-voice-btn img {
     width: 1em;
     height: 1em;
     vertical-align: middle;

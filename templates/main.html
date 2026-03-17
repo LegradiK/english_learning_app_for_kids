@@ -11,20 +11,24 @@
         <button class="tab-btn {% if active_stage == 'stage3' %}active{% endif %}" 
         onclick="switchStage(4)">🌠 Stage 4 – Fill the Sentence</button>
     </div>
-
-    <div class="difficulty-tabs">
-        <button class="diff-btn active {% if active_difficulty == 'reception' %}active{% endif %}"
-        data-difficulty="reception" onclick="switchDifficulty(event, 'reception')">🌱 Reception</button>
-        <button class="diff-btn {% if active_difficulty == 'year1' %}active{% endif %}"
-        data-difficulty="year1" onclick="switchDifficulty(event, 'year1')">📗 Year 1</button>
-        <button class="diff-btn {% if active_difficulty == 'year2' %}active{% endif %}"
-        data-difficulty="year2" onclick="switchDifficulty(event, 'year2')">📘 Year 2</button>
-        <button class="diff-btn {% if active_difficulty == 'all' %}active{% endif %}"
-        data-difficulty="all" onclick="switchDifficulty(event, 'all')">
-        <img src="{{ url_for('static', filename='spellbook.png') }}" alt="icon" 
-        style="width: 1em; height: 1em; vertical-align: middle;"> All</button>
+    <div class="difficulty-and-voices">
+        <div class="diff-btns">
+            <button class="diff-btn active" data-difficulty="reception" onclick="switchDifficulty(event, 'reception')">🌱 Reception</button>
+            <button class="diff-btn" data-difficulty="year1" onclick="switchDifficulty(event, 'year1')">📗 Year 1</button>
+            <button class="diff-btn" data-difficulty="year2" onclick="switchDifficulty(event, 'year2')">📘 Year 2</button>
+            <button class="diff-btn" data-difficulty="all" onclick="switchDifficulty(event, 'all')">
+                <img src="{{ url_for('static', filename='spellbook.png') }}" style="width:1em;height:1em;vertical-align:middle;"> All
+            </button>
+        </div>
+        <div class="voice-btns">
+            <button class="speech-voice-btn" data-voice="man" onclick="switchVoices(event, 'man')">
+                <img src="{{ url_for('static', filename='man.png') }}" style="width:1em;height:1em;vertical-align:middle;"> Man
+            </button>
+            <button class="speech-voice-btn active" data-voice="woman" onclick="switchVoices(event, 'woman')">
+                <img src="{{ url_for('static', filename='woman.png') }}" style="width:1em;height:1em;vertical-align:middle;"> Woman
+            </button>
+        </div>
     </div>
-
     <div class="card">
 
         <!-- ===== STAGE 1 ===== -->

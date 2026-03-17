@@ -101,7 +101,28 @@ function restartStage(n) {
 const state = {};
 
 // ==================== SPEECH ====================
+let activeVoice = 'Amy'; // default female
+
+function switchVoices(event, gender) {
+    document.querySelectorAll('.speech-voice-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.closest('.speech-voice-btn').classList.add('active');
+    activeVoice = gender === 'man' ? 'Brian' : 'Amy';
+}
+
 function speak(text, onEnd) {
+    if (window.puter) {
+        puter.ai.txt2speech(text, { voice: activeVoice, engine: 'neural', language: 'en-GB' })
+            .then((audio) => {
+                if (onEnd) audio.onended = onEnd;
+                audio.play();
+            })
+            .catch(() => browserSpeak(text, onEnd));
+    } else {
+        browserSpeak(text, onEnd);
+    }
+}
+
+function browserSpeak(text, onEnd) {
     if (!window.speechSynthesis) { if (onEnd) onEnd(); return; }
     window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
