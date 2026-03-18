@@ -116,9 +116,11 @@ function speak(text, onEnd) {
                 if (onEnd) audio.onended = onEnd;
                 audio.play();
             })
+            console.log("Voice: Puter")
             .catch(() => browserSpeak(text, onEnd));
     } else {
         browserSpeak(text, onEnd);
+        console.log("Voice: Browser built-in voice");
     }
 }
 
