@@ -296,7 +296,7 @@ function spellingNext(n) {
 // ==================== SENTENCE STAGE (4) ====================
 function sentenceResetUI(n) {
     document.getElementById(`s${n}-sentence`).innerHTML =
-        '<span style="color:#ccc;font-size:1rem;font-family:Nunito;font-weight:700;">Your sentence will appear here...</span>';
+        '<span style="color:#ccc;font-size:1rem;font-family:Nunito;font-weight:700;">A sentence will appear here...</span>';
     document.getElementById(`s${n}-tiles`).innerHTML = '';
     document.getElementById(`s${n}-input`).value = '';
     setBtn(`s${n}-listen-btn`, true);
