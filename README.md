@@ -1,4 +1,4 @@
-# 🧠 Word Wizard – Phonics Quiz App
+# Word Wizard – Phonics Quiz App
 
 A fun, interactive phonics and spelling quiz for primary school children (Reception – Year 2). Built with Flask and vanilla JavaScript.
 
@@ -8,7 +8,7 @@ Children listen to a spoken word or sentence, type their answer, and get instant
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 
 ## Stage 1 – Hear & Spell
@@ -25,7 +25,7 @@ Children listen to a spoken word or sentence, type their answer, and get instant
 
 ---
 
-## 🎮 How It Works
+## How It Works
 
 The app has 4 stages, each targeting a different phonics skill:
 
@@ -44,7 +44,7 @@ The app has 4 stages, each targeting a different phonics skill:
 
 ---
 
-## 🏫 Difficulty Levels
+## Difficulty Levels
 
 | Stage 1–2–4 | Stage 3 |
 |-------------|---------|
@@ -55,7 +55,7 @@ The app has 4 stages, each targeting a different phonics skill:
 
 ---
 
-## 🗂 Project Structure
+## Project Structure
 
 ```
 /
@@ -94,7 +94,7 @@ The app has 4 stages, each targeting a different phonics skill:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Clone the repo
 
@@ -119,18 +119,18 @@ Then open [http://localhost:5000](http://localhost:5000) in your browser.
 
 ---
 
-## 🔊 Text-to-Speech
+## Text-to-Speech
 
 The app uses two TTS methods, in order of preference:
 
 1. **Puter AI** (`puter.ai.txt2speech`) – neural British English voices (Amy / Brian)
 2. **Browser SpeechSynthesis** – fallback if Puter is unavailable
 
-Voice can be switched between female (Amy) and male (Brian) using the voice toggle in the UI.
+Voice can be switched between female (Amy) and male (Brian) using the voice toggle in the UI if Puter AI works.
 
 ---
 
-## 📝 Adding Your Own Words / Sentences
+## Adding Your Own Words / Sentences
 
 **Spelling words** (`data/<choose_file>.py`):
 ```python
@@ -153,7 +153,7 @@ reception = [
 
 ---
 
-## 🛠 Built With
+## Built With
 
 - [Flask](https://flask.palletsprojects.com/) – Python web framework
 - Vanilla JavaScript – no frameworks
@@ -162,7 +162,7 @@ reception = [
 
 ---
 
-## 🎨 Icon Credits
+## Icon Credits
 
 Icons used in this project are sourced from [Flaticon](https://www.flaticon.com):
 
@@ -173,6 +173,6 @@ Icons used in this project are sourced from [Flaticon](https://www.flaticon.com)
 
 ---
 
-## 📄 Licence
+## Licence
 
 MIT — free to use and modify for educational purposes.
