@@ -184,7 +184,7 @@ function spellingListen(n) {
     btn.textContent = 'Listening...';
     speak(item.word, () => {
         btn.classList.remove('speaking');
-        btn.textContent = 'Hear Again';
+        btn.textContent = 'Listen to Word';
         if (!state[n].listened) {
             state[n].listened = true;
             setBtn(`s${n}-reveal-btn`, true);
@@ -315,7 +315,7 @@ function sentenceListen(n) {
     btn.textContent = 'Listening...';
     speak(item.full, () => {
         btn.classList.remove('speaking');
-        btn.textContent = '🔊 Hear Again';
+        btn.textContent = '🔊 Listen to Sentence';
         if (!state[n].listened) {
             state[n].listened = true;
             const container = document.getElementById(`s${n}-sentence`);
