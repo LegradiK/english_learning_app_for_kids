@@ -57,7 +57,7 @@ The app has 4 stages, each targeting a different phonics skill:
 
 ```
 /
-├── app.py                  # Flask backend
+├── main.py # Main .py file for running the app
 ├── templates/
 │   ├── main.html          # Main HTML template
 │   ├── base.html
@@ -68,16 +68,26 @@ The app has 4 stages, each targeting a different phonics skill:
 │   ├── stage_3.html
 │   └── stage_4.html
 ├── static/
-│   ├── quiz.js             # All game logic
+│   ├── screenshots
+│   │      ├── stage1.png
+│   │      ├── stage4.png
+│   │      ├── stage1_correct_answer.png
+│   │      └── stage1_wrong_answer.png
+│   ├── man.png
+│   ├── spellbook.png
+│   ├── wizard.png
+│   ├── woman.png
+│   ├── script.js             # All game logic
 │   └── style.css           # Styles
-├── data/
-│   ├── spelling_words.py   # Word lists for stages 1–3
-│   └── sentences.py        # Sentence data for stage 4
-└── screenshots/            # 📁 Add your screenshots here
-    ├── stage1.png
-    ├── stage2.png
-    ├── stage3.png
-    └── stage4.png
+├── resources/
+│   ├── tricky_words.py   # Word lists for stage 1
+│   ├── vocabulary.py # Word lists for stage 2
+│   ├── top_frequent_word_100_200_300.py # Word lists for stage 3
+│   └── fill_the_sentence.py        # Sentence data for stage 4
+├── .gitignore
+├── requirements.txt
+└── README.md
+
 ```
 
 ---
@@ -87,20 +97,20 @@ The app has 4 stages, each targeting a different phonics skill:
 ### 1. Clone the repo
 
 ```bash
-git clone https://github.com/your-username/word-wizard.git
-cd word-wizard
+git clone https://github.com/LegradiK/english_learning_app_for_kids.git
+cd english_learning_app_for_kids
 ```
 
 ### 2. Install dependencies
 
 ```bash
-pip install flask
+pip install -r requirements.txt 
 ```
 
 ### 3. Run the app
 
 ```bash
-python app.py
+python main.py
 ```
 
 Then open [http://localhost:5000](http://localhost:5000) in your browser.
@@ -120,7 +130,7 @@ Voice can be switched between female (Amy) and male (Brian) using the voice togg
 
 ## 📝 Adding Your Own Words / Sentences
 
-**Spelling words** (`data/spelling_words.py`):
+**Spelling words** (`data/<choose_file>.py`):
 ```python
 reception = ["cat", "dog", "sun", ...]
 year1     = ["jumped", "flag", "cake", ...]
