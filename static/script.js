@@ -101,7 +101,7 @@ function restartStage(n) {
 const state = {};
 
 // ==================== SPEECH ====================
-let activeVoice = 'Amy'; // default female
+let activeVoice = 'Amy';
 
 function switchVoices(event, gender) {
     document.querySelectorAll('.speech-voice-btn').forEach(btn => btn.classList.remove('active'));
@@ -137,14 +137,18 @@ function browserSpeak(text, onEnd) {
 function stageInit(n) {
     const difficulty = getActiveDifficulty(n);
     const stageId = `stage${n}`;
-    const word = pickWord(stageId, difficulty);
+    const picked = pickWord(stageId, difficulty);
     const all = getWords(stageId, difficulty);
+
+    const word   = n === 4 ? picked.quiz_sentence   : picked;
+    const full   = n === 4 ? picked.answer_sentence : picked;
+    const answer = n === 4 ? picked.answer          : picked;
 
     state[n] = {
         score: 0,
         listened: false,
         revealed: false,
-        current: { word: word, full: word, blanks: [], emoji: "", index: 0, total: all.length }
+        current: { word, full, answer, blanks: [], emoji: "", index: 0, total: all.length }
     };
 
     renderDots(`s${n}-dots`, all.length, 0);
@@ -192,58 +196,52 @@ function spellingListen(n) {
 function renderInputComparison(n) {
     const item = state[n].current;
     const input = document.getElementById(`s${n}-input`).value.trim().toLowerCase();
-    const answer = item.word.toLowerCase();
+    const answer = item.answer.toLowerCase();
 
     const tilesDiv = document.getElementById(`s${n}-tiles`);
     tilesDiv.innerHTML = '';
 
-    // render answer tiles with correct/incorrect highlighting
-    answer.split('').forEach((ch, i) => {
+    const maxLen = Math.max(input.length, answer.length);
+
+    const grid = document.createElement('div');
+    grid.style.cssText = 'display:grid;grid-template-columns:' + `repeat(${maxLen}, 44px)` + ';gap:6px;justify-content:center;';
+
+    const makeLabel = (text) => {
+        const l = document.createElement('div');
+        l.style.cssText = `grid-column:1 / -1;font-size:0.7rem;font-weight:800;color:#aaa;letter-spacing:0.05em;font-family:Nunito;`;
+        l.textContent = text;
+        return l;
+    };
+
+    grid.appendChild(makeLabel('YOUR ANSWER'));
+    for (let i = 0; i < maxLen; i++) {
+        const userChar = input[i];
+        const correctChar = answer[i];
+        const isCorrect = userChar === correctChar;
         const tile = document.createElement('div');
         tile.className = 'letter-tile';
-        tile.textContent = ch.toUpperCase();
-
-        if (input.length === 0) {
-            // no input — neutral
-            tile.style.borderColor = '#ddd';
-        } else if (input[i] === undefined) {
-            // answer longer than input — missing letters in red
-            tile.style.borderColor = '#FF6B6B';
-            tile.style.background = '#fff0f0';
-        } else if (input[i] === ch) {
-            // correct letter — green
-            tile.style.borderColor = '#6BCB77';
-            tile.style.background = '#f0fff4';
-        } else {
-            // wrong letter — red, show what they typed above
-            tile.style.borderColor = '#FF6B6B';
-            tile.style.background = '#fff0f0';
-
-            // show what user typed in small text above
-            const typed = document.createElement('div');
-            typed.style.cssText = 'font-size:0.65rem;color:#FF6B6B;font-weight:800;line-height:1;margin-bottom:2px;';
-            typed.textContent = input[i].toUpperCase();
-            tile.style.flexDirection = 'column';
-            tile.style.fontSize = '1.1rem';
-            tile.insertBefore(typed, tile.firstChild);
-        }
-
+        tile.textContent = userChar ? userChar.toUpperCase() : '';
+        tile.style.color = isCorrect ? '#74d771' : '#FF6B6B';
+        tile.style.borderColor = isCorrect ? '#ccc' : '#FF6B6B';
+        tile.style.background = isCorrect ? '#fff' : '#fff0f0';
         tile.style.animationDelay = (i * 0.08) + 's';
-        tilesDiv.appendChild(tile);
-    });
-
-    // if input is longer than answer — show extra letters in red
-    if (input.length > answer.length) {
-        input.slice(answer.length).split('').forEach(ch => {
-            const tile = document.createElement('div');
-            tile.className = 'letter-tile';
-            tile.textContent = ch.toUpperCase();
-            tile.style.borderColor = '#FF6B6B';
-            tile.style.background = '#fff0f0';
-            tile.style.opacity = '0.6';
-            tilesDiv.appendChild(tile);
-        });
+        grid.appendChild(tile);
     }
+
+    grid.appendChild(makeLabel('CORRECT'));
+    for (let i = 0; i < maxLen; i++) {
+        const correctChar = answer[i];
+        const tile = document.createElement('div');
+        tile.className = 'letter-tile';
+        tile.textContent = correctChar ? correctChar.toUpperCase() : '';
+        tile.style.color = '#222';
+        tile.style.borderColor = '#ccc';
+        tile.style.background = '#fff';
+        tile.style.animationDelay = (i * 0.08) + 's';
+        grid.appendChild(tile);
+    }
+
+    tilesDiv.appendChild(grid);
 }
 
 function spellingReveal(n) {
@@ -253,7 +251,6 @@ function spellingReveal(n) {
     reveal.classList.add('revealed');
     document.getElementById(`s${n}-word-text`).textContent = item.emoji;
 
-    // replace old tile rendering with comparison
     renderInputComparison(n);
 
     speak(item.word);
@@ -262,7 +259,7 @@ function spellingReveal(n) {
     document.getElementById(`s${n}-score`).textContent = state[n].score;
 
     const input = document.getElementById(`s${n}-input`).value.trim().toLowerCase();
-    const correct = input === item.word.toLowerCase();
+    const correct = input === item.answer.toLowerCase();
 
     const msgs = correct
         ? ['Perfect spelling!', 'Nailed it!', 'Spot on!', 'Brilliant!', 'You got it!']
@@ -291,7 +288,7 @@ function spellingNext(n) {
     }
 
     const word = pickWord(stageId, difficulty);
-    state[n].current = { word: word, full: word, blanks: [], emoji: "", index, total };
+    state[n].current = { word, full: word, answer: word, blanks: [], emoji: "", index, total };
     spellingResetUI(n);
     renderDots(`s${n}-dots`, total, index);
 }
@@ -300,6 +297,8 @@ function spellingNext(n) {
 function sentenceResetUI(n) {
     document.getElementById(`s${n}-sentence`).innerHTML =
         '<span style="color:#ccc;font-size:1rem;font-family:Nunito;font-weight:700;">Your sentence will appear here...</span>';
+    document.getElementById(`s${n}-tiles`).innerHTML = '';
+    document.getElementById(`s${n}-input`).value = '';
     setBtn(`s${n}-listen-btn`, true);
     setBtn(`s${n}-reveal-btn`, false);
     setBtn(`s${n}-next-btn`, false);
@@ -316,42 +315,47 @@ function sentenceListen(n) {
     btn.textContent = 'Listening...';
     speak(item.full, () => {
         btn.classList.remove('speaking');
-        btn.textContent = 'Hear Again';
+        btn.textContent = '🔊 Hear Again';
         if (!state[n].listened) {
             state[n].listened = true;
-            renderSentence(n, false);
+            const container = document.getElementById(`s${n}-sentence`);
+            container.innerHTML = '';
+            const span = document.createElement('span');
+            span.style.cssText = 'font-size:1.2rem;font-family:Nunito;font-weight:700;color:#333;line-height:1.6;';
+            span.textContent = item.word;
+            container.appendChild(span);
             setBtn(`s${n}-reveal-btn`, true);
-            document.getElementById(`s${n}-instruction`).textContent = 'Can you guess the missing words?';
+            document.getElementById(`s${n}-instruction`).textContent = 'Type the missing word!';
         }
-    });
-}
-
-function renderSentence(n, revealed) {
-    const item = state[n].current;
-    const words = item.full.split(' ');
-    const container = document.getElementById(`s${n}-sentence`);
-    container.innerHTML = '';
-    words.forEach((w, i) => {
-        const span = document.createElement('span');
-        span.className = item.blanks.includes(i)
-            ? 'blank-word' + (revealed ? ' revealed' : '')
-            : 'sentence-word';
-        span.textContent = w;
-        container.appendChild(span);
     });
 }
 
 function sentenceReveal(n) {
     if (!state[n].listened) return;
-    renderSentence(n, true);
-    speak(state[n].current.full);
+
+    const item = state[n].current;
+    const input = document.getElementById(`s${n}-input`).value.trim().toLowerCase();
+    const correct = input === item.answer.toLowerCase();
+
+    const container = document.getElementById(`s${n}-sentence`);
+    container.innerHTML = '';
+    const span = document.createElement('span');
+    span.style.cssText = 'font-size:1.2rem;font-family:Nunito;font-weight:700;color:#333;line-height:1.6;';
+    span.textContent = item.full;
+    container.appendChild(span);
+
+    renderInputComparison(n);
+    speak(item.answer);
+
     state[n].revealed = true;
     state[n].score++;
     document.getElementById(`s${n}-score`).textContent = state[n].score;
 
-    const msgs = ['Well done!', "You're a star!", 'Amazing!', 'Keep it up!', 'Wonderful!'];
-    showFeedback(`s${n}-feedback`, msgs[Math.floor(Math.random() * msgs.length)], 'great');
-    launchEmojis(['⭐', '🎊', '✨', '💫']);
+    const msgs = correct
+        ? ['Perfect spelling!', 'Nailed it!', 'Spot on!', 'Brilliant!', 'You got it!']
+        : ['Good try!', 'Nearly there!', 'Keep practising!', 'Almost!'];
+    showFeedback(`s${n}-feedback`, msgs[Math.floor(Math.random() * msgs.length)], correct ? 'great' : 'keep-going');
+    launchEmojis(correct ? ['⭐', '🎊', '✨', '💫'] : ['💪', '📝', '🌟']);
 
     setBtn(`s${n}-reveal-btn`, false);
     setBtn(`s${n}-next-btn`, true);
@@ -373,8 +377,13 @@ function sentenceNext(n) {
         return;
     }
 
-    const word = pickWord(stageId, difficulty);
-    state[n].current = { word: word, full: word, blanks: [], emoji: "", index, total };
+    const picked = pickWord(stageId, difficulty);
+    state[n].current = {
+        word:   picked.quiz_sentence,
+        full:   picked.answer_sentence,
+        answer: picked.answer,
+        blanks: [], emoji: "", index, total
+    };
     sentenceResetUI(n);
     renderDots(`s${n}-dots`, total, index);
 }
@@ -391,11 +400,9 @@ function switchStage(n) {
         if (labels[key]) btn.textContent = labels[key];
     });
 
-    // hide 'all' button for stage 3
     const allBtn = document.querySelector('.diff-btn[data-difficulty="all"]');
     if (allBtn) allBtn.style.display = n === 3 ? 'none' : '';
 
-    // always reset to first visible difficulty button when switching stage
     document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
     const firstVisible = document.querySelector('.diff-btn:not([style*="display: none"])');
     if (firstVisible) firstVisible.classList.add('active');
@@ -405,10 +412,7 @@ function switchStage(n) {
 
 // ==================== DIFFICULTY TABS ====================
 function switchDifficulty(event, difficulty) {
-    console.log("clicked difficulty:", difficulty);
-    
     document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
-    // use data-difficulty to find the right button instead of event.target
     const clicked = document.querySelector(`.diff-btn[data-difficulty="${difficulty}"]`);
     if (clicked) clicked.classList.add('active');
 
@@ -420,4 +424,4 @@ function switchDifficulty(event, difficulty) {
 }
 
 // ==================== INIT ====================
-[1, 2, 3, 4].forEach(n => stageInit(n));
+switchStage(1);

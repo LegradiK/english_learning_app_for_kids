@@ -11,6 +11,10 @@
             🔊 Listen to Sentence
             </button>
 
+            <div class="sentence-display" id="s4-sentence">
+            <!-- sentence rendered here -->
+            <span style="color:#ccc; font-size:1rem; font-family:'Nunito'; font-weight:700;"></span>
+            </div>
             <!-- user spelling input area -->
             <div class="spelling-input-area">
                 <label class="spelling-label" for="s4-input">✏️ Type your answer here:</label>
@@ -24,13 +28,7 @@
                     autocapitalize="off"
                     spellcheck="false"
                 />
-            </div>
-
-            <div class="sentence-display" id="s4-sentence">
-            <!-- sentence rendered here -->
-            <span style="color:#ccc; font-size:1rem; font-family:'Nunito'; font-weight:700;">Your sentence will appear here...</span>
-            </div>
-
+            <div class="letter-tiles" id="s4-tiles"></div>
             <div class="btn-row">
             <button class="big-btn btn-reveal" id="s4-reveal-btn" onclick="sentenceReveal(4)" disabled style="opacity:0.4">
                 👀 Reveal Answer

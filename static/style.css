@@ -536,3 +536,12 @@
     height: 1em;
     vertical-align: middle;
 }
+
+.diff-label,
+.voice-label {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 10px;
+}
