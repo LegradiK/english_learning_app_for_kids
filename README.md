@@ -132,14 +132,14 @@ Voice can be switched between female (Amy) and male (Brian) using the voice togg
 
 ## Adding Your Own Words / Sentences
 
-**Spelling words** (`data/<choose_file>.py`):
+**Spelling words** (`resources/<choose_file>.py`):
 ```python
 reception = ["cat", "dog", "sun", ...]
 year1     = ["jumped", "flag", "cake", ...]
 year2     = ["jumping", "careful", "rainbow", ...]
 ```
 
-**Sentences** (`data/sentences.py`):
+**Sentences** (`resources/sentences.py`):
 ```python
 reception = [
     {
