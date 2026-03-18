@@ -12,13 +12,14 @@ Children listen to a spoken word or sentence, type their answer, and get instant
 
 > _Replace the placeholders below with your own screenshots._
 
-| Stage 1 – Hear & Spell | Stage 4 – Sentence Fill |
-|---|---|
-| ![Stage 1](static/screenshots/stage1.png) | ![Stage 4](screenshots/stage4.png) |
-
-| Stage 1 – Correct Answer | Stage 1 – Wrong Answer |
-|---|---|
-| ![Stage 1 correct](screenshots/stage1_correct_answer.png) | ![Stage 1 wrong](screenshots/stage1_wrong_answer.png) |
+| Stage 1 – Hear & Spell |
+| ![Stage 1](static/screenshots/stage1.png) | 
+| Stage 4 – Sentence Fill |
+| ![Stage 4](screenshots/stage4.png) |
+| Stage 1 – Correct Answer |
+| ![Stage 1 correct](screenshots/stage1_correct_answer.png) | 
+| Stage 1 – Wrong Answer |
+| ![Stage 1 wrong](screenshots/stage1_wrong_answer.png) |
 
 
 ---
