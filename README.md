@@ -1,6 +1,6 @@
 # Word Wizard – Phonics Quiz App
 
-A fun, interactive phonics and spelling quiz for primary school children (Reception – Year 2). Built with Flask and vanilla JavaScript.
+**A fun, interactive phonics and spelling quiz for primary school children (Reception – Year 2)**. Built with Flask and vanilla JavaScript.
 
 Text-to-speech is powered by Puter AI, delivering natural-sounding British English voices (Amy & Brian). If Puter is unavailable, the app falls back to the browser's built-in speech synthesis — which works but is noticeably lower quality.
 
