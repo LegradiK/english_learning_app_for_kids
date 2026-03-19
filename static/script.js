@@ -115,9 +115,12 @@ function speak(text, onEnd) {
             .then((audio) => {
                 if (onEnd) audio.onended = onEnd;
                 audio.play();
+                console.log("Voice: Puter");
             })
-            console.log("Voice: Puter")
-            .catch(() => browserSpeak(text, onEnd));
+            .catch(() => {
+                console.log("Puter failed, falling back to browser voice");
+                browserSpeak(text, onEnd);
+            });
     } else {
         browserSpeak(text, onEnd);
         console.log("Voice: Browser built-in voice");
@@ -272,7 +275,9 @@ function spellingReveal(n) {
     setBtn(`s${n}-reveal-btn`, false);
     setBtn(`s${n}-next-btn`, true);
 
-    const index = usedWords[`stage${n}`][getActiveDifficulty(n)].length;
+    const difficulty = getActiveDifficulty(n);
+    const index = usedWords[`stage${n}`][difficulty]?.length ?? 0;
+
     const total = state[n].current.total;
     markDot(`s${n}-dots`, index - 1, total);
     updateProgress(n, index, total);
@@ -362,7 +367,9 @@ function sentenceReveal(n) {
     setBtn(`s${n}-reveal-btn`, false);
     setBtn(`s${n}-next-btn`, true);
 
-    const index = usedWords[`stage${n}`][getActiveDifficulty(n)].length;
+    const difficulty = getActiveDifficulty(n);
+    const index = usedWords[`stage${n}`][difficulty]?.length ?? 0;
+
     const total = state[n].current.total;
     markDot(`s${n}-dots`, index - 1, total);
     updateProgress(n, index, total);
