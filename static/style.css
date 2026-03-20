@@ -152,7 +152,7 @@
   }
 
   .score-badge {
-    background: var(--sun);
+    background: #f9faf8;
     font-family: 'Fredoka One', cursive;
     font-size: 1rem;
     padding: 4px 14px;
