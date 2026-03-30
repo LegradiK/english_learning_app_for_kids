@@ -1,12 +1,18 @@
 # ============================================================
 # Phonics Sentences by Year Group
 # Based on Letters and Sounds / Read Write Inc phases
+# Includes tricky/common exception words and tense practice
+#
 # Each entry has:
-#   quiz_sentence  — sentence with missing word(s) shown as ___
+#   quiz_sentence   — sentence with missing word shown as ___
 #   answer_sentence — full sentence
+#   answer          — the missing word
 # ============================================================
-
+ 
 # ==================== RECEPTION ====================
+# Focus: CVC words, initial digraphs, simple HFW tricky words
+# Tricky words included: the, to, no, into, he, she, we, me, be
+ 
 reception = [
     {"quiz_sentence": "The ___ sat on the mat.",          "answer_sentence": "The cat sat on the mat.",           "answer": "cat"},
     {"quiz_sentence": "A big red ___.",                    "answer_sentence": "A big red bus.",                    "answer": "bus"},
@@ -28,9 +34,33 @@ reception = [
     {"quiz_sentence": "I can see the green ___.",          "answer_sentence": "I can see the green tree.",         "answer": "tree"},
     {"quiz_sentence": "The ___ sat on the road.",          "answer_sentence": "The goat sat on the road.",         "answer": "goat"},
     {"quiz_sentence": "The ___ is up in the sky.",         "answer_sentence": "The moon is up in the sky.",        "answer": "moon"},
+    {"quiz_sentence": "The ___ is on my leg.",             "answer_sentence": "The bug is on my leg.",             "answer": "bug"},
+    {"quiz_sentence": "I have a red ___.",                 "answer_sentence": "I have a red hat.",                 "answer": "hat"},
+    {"quiz_sentence": "The ___ is in the bin.",            "answer_sentence": "The tin is in the bin.",            "answer": "tin"},
+    {"quiz_sentence": "The ___ ran up the hill.",          "answer_sentence": "The fox ran up the hill.",          "answer": "fox"},
+    {"quiz_sentence": "A wet ___ is not fun.",             "answer_sentence": "A wet sock is not fun.",            "answer": "sock"},
+    {"quiz_sentence": "I can sit on the ___.",             "answer_sentence": "I can sit on the log.",             "answer": "log"},
+    {"quiz_sentence": "The jam is in the ___.",            "answer_sentence": "The jam is in the pot.",            "answer": "pot"},
+    {"quiz_sentence": "I can see a red ___.",              "answer_sentence": "I can see a red kite.",             "answer": "kite"},
+    {"quiz_sentence": "The ___ has big teeth.",            "answer_sentence": "The shark has big teeth.",          "answer": "shark"},
+    {"quiz_sentence": "I put on my ___.",                  "answer_sentence": "I put on my coat.",                 "answer": "coat"},
+    {"quiz_sentence": "___ dog is big.",                   "answer_sentence": "The dog is big.",                   "answer": "The"},
+    {"quiz_sentence": "I went ___ the shop.",              "answer_sentence": "I went to the shop.",               "answer": "to"},
+    {"quiz_sentence": "___ said no.",                      "answer_sentence": "He said no.",                       "answer": "He"},
+    {"quiz_sentence": "___ has a red bag.",                "answer_sentence": "She has a red bag.",                "answer": "She"},
+    {"quiz_sentence": "Can ___ go out?",                   "answer_sentence": "Can we go out?",                    "answer": "we"},
+    {"quiz_sentence": "I want to ___ good.",               "answer_sentence": "I want to be good.",                "answer": "be"},
+    {"quiz_sentence": "The cat ran ___ the box.",          "answer_sentence": "The cat ran into the box.",         "answer": "into"},
+    {"quiz_sentence": "I said ___ to the cake.",           "answer_sentence": "I said no to the cake.",            "answer": "no"},
+    {"quiz_sentence": "Will you come with ___?",           "answer_sentence": "Will you come with me?",            "answer": "me"},
+    {"quiz_sentence": "We like ___ go fast.",              "answer_sentence": "We like to go fast.",               "answer": "to"},
 ]
-
+ 
 # ==================== YEAR 1 ====================
+# Focus: longer vowel patterns (ai, ee, oa, oo, etc.), consonant clusters,
+#        split digraphs; past tense (-ed, irregular); future tense (will + verb)
+# Tricky words included: all, are, was, said, some, come, were, little, one, where, what
+ 
 year1 = [
     {"quiz_sentence": "The frog ___ over the log.",        "answer_sentence": "The frog jumped over the log.",     "answer": "jumped"},
     {"quiz_sentence": "The ___ is very loud.",             "answer_sentence": "The drum is very loud.",            "answer": "drum"},
@@ -53,43 +83,127 @@ year1 = [
     {"quiz_sentence": "The boy has a ___ boat.",           "answer_sentence": "The boy has a toy boat.",           "answer": "toy"},
     {"quiz_sentence": "She ___ a new picture.",            "answer_sentence": "She drew a new picture.",           "answer": "drew"},
     {"quiz_sentence": "The hawk saw the small ___.",       "answer_sentence": "The hawk saw the small mouse.",     "answer": "mouse"},
+    {"quiz_sentence": "I can see the ___ in the pool.",    "answer_sentence": "I can see the fish in the pool.",   "answer": "fish"},
+    {"quiz_sentence": "The ___ shines on the lake.",       "answer_sentence": "The light shines on the lake.",     "answer": "light"},
+    {"quiz_sentence": "There is frost on the ___.",        "answer_sentence": "There is frost on the ground.",     "answer": "ground"},
+    {"quiz_sentence": "She wore a ___ dress.",             "answer_sentence": "She wore a green dress.",           "answer": "green"},
+    {"quiz_sentence": "The bread is on the ___.",          "answer_sentence": "The bread is on the shelf.",        "answer": "shelf"},
+    {"quiz_sentence": "I have a sore ___.",                "answer_sentence": "I have a sore throat.",             "answer": "throat"},
+    {"quiz_sentence": "The cloud was big and ___.",        "answer_sentence": "The cloud was big and white.",      "answer": "white"},
+    {"quiz_sentence": "I can hear the ___ in the tree.",   "answer_sentence": "I can hear the bird in the tree.",  "answer": "bird"},
+    {"quiz_sentence": "She ___ the door and went in.",     "answer_sentence": "She opened the door and went in.",  "answer": "opened"},
+    {"quiz_sentence": "He ___ his shoes on the mat.",      "answer_sentence": "He placed his shoes on the mat.",   "answer": "placed"},
+    {"quiz_sentence": "We ___ in the pool all day.",       "answer_sentence": "We splashed in the pool all day.",  "answer": "splashed"},
+    {"quiz_sentence": "The cat ___ up at the moon.",       "answer_sentence": "The cat looked up at the moon.",    "answer": "looked"},
+    {"quiz_sentence": "I ___ my hands before lunch.",      "answer_sentence": "I washed my hands before lunch.",   "answer": "washed"},
+    {"quiz_sentence": "We ___ to the park yesterday.",     "answer_sentence": "We went to the park yesterday.",    "answer": "went"},
+    {"quiz_sentence": "I ___ a big sandwich for lunch.",   "answer_sentence": "I ate a big sandwich for lunch.",   "answer": "ate"},
+    {"quiz_sentence": "He ___ his new book in one day.",   "answer_sentence": "He read his new book in one day.",  "answer": "read"},
+    {"quiz_sentence": "She ___ a letter to her gran.",     "answer_sentence": "She wrote a letter to her gran.",   "answer": "wrote"},
+    {"quiz_sentence": "The bell ___ at noon.",             "answer_sentence": "The bell rang at noon.",            "answer": "rang"},
+    {"quiz_sentence": "She ___ her coat on the peg.",      "answer_sentence": "She hung her coat on the peg.",     "answer": "hung"},
+    {"quiz_sentence": "I ___ go to the park later.",       "answer_sentence": "I will go to the park later.",      "answer": "will"},
+    {"quiz_sentence": "She will ___ her gran tomorrow.",   "answer_sentence": "She will visit her gran tomorrow.",  "answer": "visit"},
+    {"quiz_sentence": "It will ___ sunny this weekend.",   "answer_sentence": "It will be sunny this weekend.",    "answer": "be"},
+    {"quiz_sentence": "We will ___ a new story next week.","answer_sentence": "We will read a new story next week.","answer": "read"},
+    {"quiz_sentence": "The rocket ___ fly to the moon.",   "answer_sentence": "The rocket will fly to the moon.",  "answer": "will"},
+    {"quiz_sentence": "We ___ all very happy.",            "answer_sentence": "We were all very happy.",           "answer": "were"},
+    {"quiz_sentence": "___ do you want to eat?",           "answer_sentence": "What do you want to eat?",          "answer": "What"},
+    {"quiz_sentence": "She ___ she was sorry.",            "answer_sentence": "She said she was sorry.",           "answer": "said"},
+    {"quiz_sentence": "It ___ a cold winter day.",         "answer_sentence": "It was a cold winter day.",         "answer": "was"},
+    {"quiz_sentence": "___ of the cakes were eaten.",      "answer_sentence": "Some of the cakes were eaten.",     "answer": "Some"},
+    {"quiz_sentence": "Please ___ here at once.",          "answer_sentence": "Please come here at once.",         "answer": "come"},
+    {"quiz_sentence": "There is a ___ cat on the wall.",   "answer_sentence": "There is a little cat on the wall.","answer": "little"},
+    {"quiz_sentence": "___ of my friends came to play.",   "answer_sentence": "One of my friends came to play.",   "answer": "One"},
+    {"quiz_sentence": "___ did you find the shell?",       "answer_sentence": "Where did you find the shell?",     "answer": "Where"},
+    {"quiz_sentence": "The rabbits ___ in the field.",     "answer_sentence": "The rabbits were in the field.",    "answer": "were"},
 ]
-
+ 
 # ==================== YEAR 2 ====================
+# Focus: suffixes (-ing, -ed, -er, -est, -ly, -ful, -less, -ness, -ment),
+#        prefixes (un-, dis-), contractions, homophones, compound words;
+#        continued past/future tense; subordinate clauses
+# Tricky words included: because, could, should, would, many, water,
+#                        again, beautiful, every, great, both, old, only
+ 
 year2 = [
-    {"quiz_sentence": "The dog is ___ over the fence.",    "answer_sentence": "The dog is jumping over the fence.",  "answer": "jumping"},
-    {"quiz_sentence": "She smiled and ___ her hands.",     "answer_sentence": "She smiled and clapped her hands.",   "answer": "clapped"},
-    {"quiz_sentence": "He ___ all the way home.",          "answer_sentence": "He hopped all the way home.",         "answer": "hopped"},
-    {"quiz_sentence": "The baby is ___ in her cot.",       "answer_sentence": "The baby is sleeping in her cot.",    "answer": "sleeping"},
-    {"quiz_sentence": "We ___ and sang in the rain.",      "answer_sentence": "We skipped and sang in the rain.",    "answer": "skipped"},
-    {"quiz_sentence": "She was ___ with the glass.",       "answer_sentence": "She was careful with the glass.",     "answer": "careful"},
-    {"quiz_sentence": "The puppy is ___ and kind.",        "answer_sentence": "The puppy is playful and kind.",      "answer": "playful"},
-    {"quiz_sentence": "It was a ___ situation.",           "answer_sentence": "It was a hopeless situation.",        "answer": "hopeless"},
-    {"quiz_sentence": "The ___ made him scared.",          "answer_sentence": "The darkness made him scared.",       "answer": "darkness"},
-    {"quiz_sentence": "She spoke ___ to her friend.",      "answer_sentence": "She spoke quietly to her friend.",    "answer": "quietly"},
-    {"quiz_sentence": "He ran ___ to the door.",           "answer_sentence": "He ran quickly to the door.",         "answer": "quickly"},
-    {"quiz_sentence": "He was ___ about the rain.",        "answer_sentence": "He was unhappy about the rain.",      "answer": "unhappy"},
-    {"quiz_sentence": "She ___ her shoelaces.",            "answer_sentence": "She untied her shoelaces.",           "answer": "untied"},
-    {"quiz_sentence": "I ___ with what you said.",         "answer_sentence": "I disagree with what you said.",      "answer": "disagree"},
-    {"quiz_sentence": "The magician ___ in a flash.",      "answer_sentence": "The magician disappeared in a flash.","answer": "disappeared"},
-    {"quiz_sentence": "The ___ came after the storm.",     "answer_sentence": "The rainbow came after the storm.",   "answer": "rainbow"},
-    {"quiz_sentence": "I put my homework in my ___.",      "answer_sentence": "I put my homework in my backpack.",   "answer": "backpack"},
-    {"quiz_sentence": "The ___ grew very tall.",           "answer_sentence": "The sunflower grew very tall.",       "answer": "sunflower"},
-    {"quiz_sentence": "I ___ find my coat anywhere.",      "answer_sentence": "I can't find my coat anywhere.",      "answer": "can't"},
-    {"quiz_sentence": "She ___ want to go to bed.",        "answer_sentence": "She didn't want to go to bed.",       "answer": "didn't"},
-    {"quiz_sentence": "___ going to the park today.",      "answer_sentence": "We're going to the park today.",      "answer": "We're"},
-    {"quiz_sentence": "___ the tallest boy in the class.", "answer_sentence": "He's the tallest boy in the class.",  "answer": "He's"},
-    {"quiz_sentence": "I can ___ the birds sing here.",    "answer_sentence": "I can hear the birds sing here.",     "answer": "hear"},
-    {"quiz_sentence": "There is a bear over ___.",         "answer_sentence": "There is a bear over there.",         "answer": "there"},
-    {"quiz_sentence": "She ___ the path she would take.",  "answer_sentence": "She knew the path she would take.",   "answer": "knew"},
-    {"quiz_sentence": "The ___ was dark and quiet.",       "answer_sentence": "The night was dark and quiet.",       "answer": "night"},
+    {"quiz_sentence": "The dog is ___ over the fence.",       "answer_sentence": "The dog is jumping over the fence.",   "answer": "jumping"},
+    {"quiz_sentence": "She smiled and ___ her hands.",        "answer_sentence": "She smiled and clapped her hands.",    "answer": "clapped"},
+    {"quiz_sentence": "He ___ all the way home.",             "answer_sentence": "He hopped all the way home.",          "answer": "hopped"},
+    {"quiz_sentence": "The baby is ___ in her cot.",          "answer_sentence": "The baby is sleeping in her cot.",     "answer": "sleeping"},
+    {"quiz_sentence": "We ___ and sang in the rain.",         "answer_sentence": "We skipped and sang in the rain.",     "answer": "skipped"},
+    {"quiz_sentence": "She was ___ with the glass.",          "answer_sentence": "She was careful with the glass.",      "answer": "careful"},
+    {"quiz_sentence": "The puppy is ___ and kind.",           "answer_sentence": "The puppy is playful and kind.",       "answer": "playful"},
+    {"quiz_sentence": "It was a ___ situation.",              "answer_sentence": "It was a hopeless situation.",         "answer": "hopeless"},
+    {"quiz_sentence": "The ___ made him scared.",             "answer_sentence": "The darkness made him scared.",        "answer": "darkness"},
+    {"quiz_sentence": "She spoke ___ to her friend.",         "answer_sentence": "She spoke quietly to her friend.",     "answer": "quietly"},
+    {"quiz_sentence": "He ran ___ to the door.",              "answer_sentence": "He ran quickly to the door.",          "answer": "quickly"},
+    {"quiz_sentence": "He was ___ about the rain.",           "answer_sentence": "He was unhappy about the rain.",       "answer": "unhappy"},
+    {"quiz_sentence": "She ___ her shoelaces.",               "answer_sentence": "She untied her shoelaces.",            "answer": "untied"},
+    {"quiz_sentence": "I ___ with what you said.",            "answer_sentence": "I disagree with what you said.",       "answer": "disagree"},
+    {"quiz_sentence": "The magician ___ in a flash.",         "answer_sentence": "The magician disappeared in a flash.", "answer": "disappeared"},
+    {"quiz_sentence": "The ___ came after the storm.",        "answer_sentence": "The rainbow came after the storm.",    "answer": "rainbow"},
+    {"quiz_sentence": "I put my homework in my ___.",         "answer_sentence": "I put my homework in my backpack.",    "answer": "backpack"},
+    {"quiz_sentence": "The ___ grew very tall.",              "answer_sentence": "The sunflower grew very tall.",        "answer": "sunflower"},
+    {"quiz_sentence": "I ___ find my coat anywhere.",         "answer_sentence": "I can't find my coat anywhere.",       "answer": "can't"},
+    {"quiz_sentence": "She ___ want to go to bed.",           "answer_sentence": "She didn't want to go to bed.",        "answer": "didn't"},
+    {"quiz_sentence": "___ going to the park today.",         "answer_sentence": "We're going to the park today.",       "answer": "We're"},
+    {"quiz_sentence": "___ the tallest boy in the class.",    "answer_sentence": "He's the tallest boy in the class.",   "answer": "He's"},
+    {"quiz_sentence": "I can ___ the birds sing here.",       "answer_sentence": "I can hear the birds sing here.",      "answer": "hear"},
+    {"quiz_sentence": "There is a bear over ___.",            "answer_sentence": "There is a bear over there.",          "answer": "there"},
+    {"quiz_sentence": "She ___ the path she would take.",     "answer_sentence": "She knew the path she would take.",    "answer": "knew"},
+    {"quiz_sentence": "The ___ was dark and quiet.",          "answer_sentence": "The night was dark and quiet.",        "answer": "night"},
+    {"quiz_sentence": "The child ___ into the classroom.",    "answer_sentence": "The child walked into the classroom.", "answer": "walked"},
+    {"quiz_sentence": "The kitten is the ___ of all.",        "answer_sentence": "The kitten is the smallest of all.",   "answer": "smallest"},
+    {"quiz_sentence": "She was the ___ runner in school.",    "answer_sentence": "She was the fastest runner in school.","answer": "fastest"},
+    {"quiz_sentence": "He spoke in a ___ voice.",             "answer_sentence": "He spoke in a powerful voice.",        "answer": "powerful"},
+    {"quiz_sentence": "The water was ___ cold.",              "answer_sentence": "The water was painfully cold.",        "answer": "painfully"},
+    {"quiz_sentence": "He showed great ___ in the race.",     "answer_sentence": "He showed great excitement in the race.", "answer": "excitement"},
+    {"quiz_sentence": "She was full of ___.",                 "answer_sentence": "She was full of kindness.",            "answer": "kindness"},
+    {"quiz_sentence": "It was ___ to lift the box.",          "answer_sentence": "It was impossible to lift the box.",   "answer": "impossible"},
+    {"quiz_sentence": "They ___ the game without us.",        "answer_sentence": "They started the game without us.",   "answer": "started"},
+    {"quiz_sentence": "The ice cream ___ in the sun.",        "answer_sentence": "The ice cream melted in the sun.",    "answer": "melted"},
+    {"quiz_sentence": "She ___ a story for the class.",       "answer_sentence": "She told a story for the class.",     "answer": "told"},
+    {"quiz_sentence": "I ___ my friend at the gate.",         "answer_sentence": "I met my friend at the gate.",        "answer": "met"},
+    {"quiz_sentence": "We ___ a tent in the garden.",         "answer_sentence": "We built a tent in the garden.",      "answer": "built"},
+    {"quiz_sentence": "She ___ her best dress to the party.", "answer_sentence": "She wore her best dress to the party.", "answer": "wore"},
+    {"quiz_sentence": "He ___ the window by mistake.",        "answer_sentence": "He broke the window by mistake.",     "answer": "broke"},
+    {"quiz_sentence": "The bird ___ south for winter.",       "answer_sentence": "The bird flew south for winter.",     "answer": "flew"},
+    {"quiz_sentence": "I ___ the answer was wrong.",          "answer_sentence": "I thought the answer was wrong.",     "answer": "thought"},
+    {"quiz_sentence": "They ___ very tired after the walk.",  "answer_sentence": "They felt very tired after the walk.","answer": "felt"},
+    {"quiz_sentence": "I am ___ to bake a cake.",             "answer_sentence": "I am going to bake a cake.",          "answer": "going"},
+    {"quiz_sentence": "They will ___ at six o'clock.",        "answer_sentence": "They will arrive at six o'clock.",    "answer": "arrive"},
+    {"quiz_sentence": "She is ___ to win the race.",          "answer_sentence": "She is going to win the race.",       "answer": "going"},
+    {"quiz_sentence": "It will ___ dark soon.",               "answer_sentence": "It will get dark soon.",              "answer": "get"},
+    {"quiz_sentence": "We are ___ to visit the zoo.",         "answer_sentence": "We are going to visit the zoo.",      "answer": "going"},
+    {"quiz_sentence": "He will ___ his homework later.",      "answer_sentence": "He will finish his homework later.",  "answer": "finish"},
+    {"quiz_sentence": "I cried ___ I was sad.",               "answer_sentence": "I cried because I was sad.",          "answer": "because"},
+    {"quiz_sentence": "You ___ try your best.",               "answer_sentence": "You should try your best.",           "answer": "should"},
+    {"quiz_sentence": "I ___ hear the music clearly.",        "answer_sentence": "I could hear the music clearly.",     "answer": "could"},
+    {"quiz_sentence": "He said he ___ help later.",           "answer_sentence": "He said he would help later.",         "answer": "would"},
+    {"quiz_sentence": "There are ___ books on the shelf.",    "answer_sentence": "There are many books on the shelf.",   "answer": "many"},
+    {"quiz_sentence": "She drank a glass of ___.",            "answer_sentence": "She drank a glass of water.",          "answer": "water"},
+    {"quiz_sentence": "He came back ___.",                    "answer_sentence": "He came back again.",                  "answer": "again"},
+    {"quiz_sentence": "The flowers were ___.",                "answer_sentence": "The flowers were beautiful.",          "answer": "beautiful"},
+    {"quiz_sentence": "___ child got a sticker.",             "answer_sentence": "Every child got a sticker.",           "answer": "Every"},
+    {"quiz_sentence": "It was a ___ day at the beach.",       "answer_sentence": "It was a great day at the beach.",     "answer": "great"},
+    {"quiz_sentence": "___ my sisters love to dance.",        "answer_sentence": "Both my sisters love to dance.",       "answer": "Both"},
+    {"quiz_sentence": "The ___ man walked slowly.",           "answer_sentence": "The old man walked slowly.",           "answer": "old"},
+    {"quiz_sentence": "She was the ___ one to finish.",       "answer_sentence": "She was the only one to finish.",      "answer": "only"},
+    {"quiz_sentence": "___ not going to rain today.",         "answer_sentence": "It's not going to rain today.",       "answer": "It's"},
+    {"quiz_sentence": "I ___ seen that film before.",         "answer_sentence": "I haven't seen that film before.",    "answer": "haven't"},
+    {"quiz_sentence": "___ finished our lunch already.",      "answer_sentence": "We've finished our lunch already.",   "answer": "We've"},
+    {"quiz_sentence": "They ___ ready to go home.",           "answer_sentence": "They're ready to go home.",           "answer": "They're"},
+    {"quiz_sentence": "I ___ do it on my own.",               "answer_sentence": "I can't do it on my own.",            "answer": "can't"},
+    {"quiz_sentence": "She ___ been feeling well.",           "answer_sentence": "She hasn't been feeling well.",       "answer": "hasn't"},
 ]
-
+ 
+# ==================== ASSEMBLY ====================
 all_sentences = reception + year1 + year2
-
+ 
 quiz = {
     "reception": reception,
     "year1":     year1,
     "year2":     year2,
-    "all":       all_sentences
+    "all":       all_sentences,
 }
